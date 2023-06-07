@@ -59,13 +59,3 @@ variable "route_cidr" {
   type = string
   default = "0.0.0.0/0"
 }
-
-# variable "ec2_config" {
-#   type = map
-#   default = {
-#    ami = ""
-#    inst_type = "t2.micro"
-#    key = ""
-#    az = "us-east-2b"
-#   }
-# }

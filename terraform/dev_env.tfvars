@@ -44,31 +44,17 @@ private_subnet_list = {
     }
 }
 
-volume_size = 200
-volume_type = "gp3"
+eks_node_volume_size = 200
+eks_node_volume_type = "gp3"
 
-# eks_version = "19.15.2"
+
 cluster_name       = "cluster"
 cluster_version    = "1.27"
 
-# vpc_id            = ""
-# eks_subnets_list  = []
-# eks_subnets_list  = []
 eks_node_ami_type = "AL2_x86_64"
 eks_node_disk_size              = 200
-eks_node_instance_type          = ["t2.micro"]
+eks_node_instance_type          =  ["m5.2xlarge" , "m6i.2xlarge" , "m5a.2xlarge" , "m4.2xlarge"]
 eks_node_instance_capacity_type = "ON_DEMAND"
 
 eks_node_minimum_number  = 4
 eks_node_maximum_number  = 4
-
-#eks_node_phenobot_minimum_number = 2
-#eks_node_phenobot_maximum_number = 2
-
-
-# ec2_config = {
-#    ami = ""
-#    inst_type = "t2.micro"
-#    key = ""
-#    az = "us-east-2b"
-# }
