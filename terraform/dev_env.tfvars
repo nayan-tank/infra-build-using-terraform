@@ -56,5 +56,5 @@ eks_node_disk_size              = 200
 eks_node_instance_type          =  ["m5.2xlarge" , "m6i.2xlarge" , "m5a.2xlarge" , "m4.2xlarge"]
 eks_node_instance_capacity_type = "ON_DEMAND"
 
-eks_node_minimum_number  = 4
-eks_node_maximum_number  = 4
+eks_node_minimum_number  = 1
+eks_node_maximum_number  = 3

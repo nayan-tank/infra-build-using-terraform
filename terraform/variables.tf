@@ -5,7 +5,9 @@ variable "aws_region" {
 }
 
 #### VPC ####
-variable "vpc_cidr" {}
+variable "vpc_cidr" {
+  type = string
+}
 
 variable "basename" {
    description = "Prefix used for all resources names"

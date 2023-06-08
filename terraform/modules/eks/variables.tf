@@ -2,6 +2,20 @@ variable "basename" {
   type = string
 }
 
+#### VPC ####
+
+variable "subnet_ids" {
+  type = list
+}
+
+variable "vpc_id" {
+  type = string
+}
+
+variable "cidr_block" {
+  type = string
+}
+
 #### EKS ####
 
 variable "eks_node_volume_size" {

@@ -50,14 +50,14 @@ resource "aws_launch_template" "external" {
 resource "aws_security_group" "sg" {
   name        = "sg"
   description = "Allow TLS inbound traffic"
-  vpc_id      = module.vpc.main.id
+  vpc_id      = var.vpc_id
 
   ingress {
     description      = "TLS from VPC"
     from_port        = 443
     to_port          = 443
     protocol         = "tcp"
-    cidr_blocks      = [module.vpc.main.cidr_block]
+    cidr_blocks      = [ var.cidr_block ]
   }
 
   ingress {
@@ -65,7 +65,7 @@ resource "aws_security_group" "sg" {
     from_port        = 80
     to_port          = 80
     protocol         = "tcp"
-    cidr_blocks      = [module.vpc.main.cidr_block]
+    cidr_blocks      = [ var.cidr_block ]
   }
 
   egress {
@@ -89,8 +89,9 @@ module "eks" {
   cluster_endpoint_private_access = var.cluster_endpoint_private_access
   cluster_endpoint_public_access  = var.cluster_endpoint_public_access
 
-  vpc_id     = module.vpc.vpc_id
-  subnet_ids = [ module.vpc.private_subnet_0.id, module.vpc.private_subnet_1.id,module.vpc.private_subnet_2.id, ] 
+  vpc_id     = var.vpc_id
+
+  subnet_ids = var.subnet_ids
 
   cluster_addons = {
     aws-ebs-csi-driver = {
@@ -113,7 +114,7 @@ module "eks" {
       from_port                  = 443
       to_port                    = 443
       type                       = "ingress"
-      cidr_blocks                 = [ module.vpc.vpc_cidr ]
+      cidr_blocks                 = [ var.cidr_block ] 
     }
   }
   node_security_group_additional_rules = {
