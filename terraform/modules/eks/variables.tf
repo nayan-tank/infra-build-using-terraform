@@ -1,30 +1,20 @@
-variable "aws_region" {
-  type        = string
-  default     = "us-east-2"
-  description = "AWS region for terraform resources"
-}
-
-#### VPC ####
-variable "vpc_cidr" {
+variable "basename" {
   type = string
 }
 
-variable "basename" {
-   description = "Prefix used for all resources names"
+#### VPC ####
+
+variable "subnet_ids" {
+  type = list
 }
 
-variable "private_subnet_list" {
-   type = map
+variable "vpc_id" {
+  type = string
 }
 
-variable "public_subnet_list" {
-   type = map
+variable "cidr_block" {
+  type = string
 }
-
-variable "route_cidr" {
-   type = string
-}
-
 
 #### EKS ####
 
