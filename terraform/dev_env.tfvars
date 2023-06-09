@@ -53,8 +53,11 @@ cluster_version    = "1.27"
 
 eks_node_ami_type = "AL2_x86_64"
 eks_node_disk_size              = 200
-eks_node_instance_type          =  ["m5.2xlarge" , "m6i.2xlarge" , "m5a.2xlarge" , "m4.2xlarge"]
+eks_node_instance_type          =  ["t2.medium"]
 eks_node_instance_capacity_type = "ON_DEMAND"
 
-eks_node_minimum_number  = 1
+eks_node_minimum_number  = 3
 eks_node_maximum_number  = 3
+
+cluster_endpoint_private_access = true
+cluster_endpoint_public_access = false

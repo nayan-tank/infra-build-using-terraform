@@ -84,7 +84,7 @@ resource "aws_security_group" "sg" {
 module "eks" {
   source = "terraform-aws-modules/eks/aws"
   version = "19.15.2"
-  cluster_name                    = "${var.basename}-${var.cluster_name}"
+  cluster_name                    = "${var.cluster_name}"
   cluster_version                 = var.cluster_version
   cluster_endpoint_private_access = var.cluster_endpoint_private_access
   cluster_endpoint_public_access  = var.cluster_endpoint_public_access
@@ -95,7 +95,7 @@ module "eks" {
 
   cluster_addons = {
     aws-ebs-csi-driver = {
-      resolve_conflicts = "OVERWRITE"
+      addon_version = "v1.19.0-eksbuild.2"
     }
   }
 
@@ -140,7 +140,7 @@ module "eks" {
   eks_managed_node_groups = {
     on-demand = {
       create_launch_template   = false
-      launch_template_name     = aws_launch_template.external.name
+      launch_template_id     = aws_launch_template.external.id
       launch_template_version  = aws_launch_template.external.default_version
       min_size                 = var.eks_node_minimum_number 
       max_size                 = var.eks_node_maximum_number 
